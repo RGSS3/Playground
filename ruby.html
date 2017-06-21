@@ -16,7 +16,9 @@
     {paths:
       {
          codemirror:'https://unpkg.com/codemirror',
-         'codemirror/lib': 'https://unpkg.com/codemirror',
+         'codemirror/lib': 'https://unpkg.com/codemirror/lib',
+         'codemirror/mode': 'https://unpkg.com/codemirror/mode',
+
       }
     }
    );
@@ -31,7 +33,7 @@
    
    
    window.addEventListener('load', function(){
-     Promise.all([$load('codemirror/lib/codemirror'), $load('codemirror/mode/ruby/ruby.js'), $load('https://cdnjs.cloudflare.com/ajax/libs/opal/0.3.43/opal.min.js')])
+     Promise.all([$load('codemirror/lib/codemirror'), $load('codemirror/mode/ruby/ruby'), $load('https://cdnjs.cloudflare.com/ajax/libs/opal/0.3.43/opal.min.js')])
           .then(([CM, _, opal]) =>  {                
             console.log(opal);
             window.editor = new CM(document.querySelector("#code"), {
