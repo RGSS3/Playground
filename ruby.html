@@ -28,7 +28,7 @@
    
    
    window.addEventListener('load', function(){
-     Promise.all([$load('codemirror'), $load('codemirror/mode/ruby/ruby.js')])
+     Promise.all([$load('codemirror/lib/codemirror.js'), $load('codemirror/mode/ruby/ruby.js')])
           .then(([CM]) =>                         
             window.editor = new CM(document.querySelector("#code"), {
                mode: 'ruby',
