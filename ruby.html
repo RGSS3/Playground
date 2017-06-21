@@ -44,8 +44,15 @@
                lineNumbers: true,
                theme: 'solarized light',
             }); 
-            console.log(Opal.load);
+            Opal.load('native');
+            Opal.load('opal-parser');
           })
+          .then(_ => {
+            if(window.location.query){
+               let git = `https://api.github.com/gists/${window.location.query}`;
+               return fetch(git).then(resp => resp.json());
+            }
+          }).then(console.log);
    });
    
    
