@@ -5,7 +5,7 @@
 <div id='code'>
 </div>
 
-<div id='output'>
+<div id='console'>
 </div>
 
 
@@ -31,6 +31,11 @@
          require([key], ac));
    
    
+   var simple_sandbox = script => eval(`
+      (function({console, window}){
+        ${script};
+      })
+   `);
    
    window.addEventListener('load', function(){
      Promise.all([
@@ -43,14 +48,24 @@
                lineNumbers: true,
                theme: 'solarized light',
             }); 
-            
+            window.console = new CM(document.querySelector("#console"), {
+               lineNumbers: true,
+               theme: 'solarized dark',
+            }); 
           })
           .then(_ => {
             if(window.location.query){
                let git = `https://api.github.com/gists/${window.location.query}`;
-               return fetch(git).then(resp => resp.json());
+               return fetch(git).then(resp => resp.json())
             }
-          }).then(console.log);
+          }).then(json => {
+             let code = json.files['main.js'].content;
+             window.editor.setValue(code);
+             let sandbox = simple_sandbox(code);
+             code({console: {log: function(a){
+                window.console.setValue(window.console.getValue() + a + "\n");
+             }});
+          });
    });
    
    
