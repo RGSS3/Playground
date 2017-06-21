@@ -1,5 +1,5 @@
 <!doctype html>
-<title>Ruby</title>
+<title>javascript</title>
 <script src='https://unpkg.com/requirejs/require.js'></script>
 
 <div id='code'>
@@ -35,7 +35,7 @@
    window.addEventListener('load', function(){
      Promise.all([
           $load('codemirror/lib/codemirror'), 
-          $load('codemirror/mode/ruby/ruby'), 
+          $load('codemirror/mode/javascript/javascript'), 
      ])
           .then(([CM]) =>  {                
             window.editor = new CM(document.querySelector("#code"), {
