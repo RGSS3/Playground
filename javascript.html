@@ -64,7 +64,7 @@
              let sandbox = simple_sandbox(code);
              code({console: {log: function(a){
                 window.console.setValue(window.console.getValue() + a + "\n");
-             }});
+             }}});
           });
    });
    
