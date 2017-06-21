@@ -12,8 +12,8 @@
    requirejs.config(
     {paths:
       {
-         codemirror:'https://unpkg.com/codemirror/lib',
-         'codemirror/lib':'https://unpkg.com/codemirror/lib'
+         codemirror:'https://unpkg.com/codemirror',
+         'codemirror/lib':'https://unpkg.com/codemirror/lib',
       }
     }
    );
@@ -23,7 +23,7 @@
    
    let $load = key => 
       new Promise((ac, re) => 
-         require([unpkg(key)], ac));
+         require([key], ac));
    
    
    
