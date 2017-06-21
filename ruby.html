@@ -5,9 +5,25 @@
 <div id='code'>
 </div>
 
+
+<link href='https://unpkg.com/codemirror/lib/codemirror.css' rel='stylesheet' type='text/css' />
 <script>
-   window.addEventListener('load', function(){
+   let $load = key => 
+      new Promise((ac, re) => 
+         require([`https://unpkg.com/${key}`], ac));
+   
       
+                  
+   
+   window.addEventListener('load', function(){
+      $load('codemirror').then(CM => 
+         $load('codemirror/mode/ruby/ruby.js', _ =>                              
+            window.editor = new CM(document.querySelector("#code"), {
+               mode: 'ruby',
+               lineNumbers: true;
+            });
+         )
+      );                               
      
    });
 </script>
