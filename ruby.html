@@ -36,11 +36,7 @@
      Promise.all([
           $load('codemirror/lib/codemirror'), 
           $load('codemirror/mode/ruby/ruby'), 
-          $load('https://cdn.opalrb.org/opal/current/opal.js').then(
-              _ => $load('https://cdn.opalrb.org/opal/current/opal-parser.js')
-          ).then(
-             _ =>  $load('https://cdn.opalrb.org/opal/current/native.min.js')
-          )
+          $load('https://cdn.opalrb.org/opal/current/opal.min.js')
      ])
           .then(([CM]) =>  {                
             window.editor = new CM(document.querySelector("#code"), {
