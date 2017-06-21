@@ -48,23 +48,24 @@
                lineNumbers: true,
                theme: 'solarized light',
             }); 
-            window.console = new CM(document.querySelector("#console"), {
+            window.con = new CM(document.querySelector("#console"), {
                lineNumbers: true,
                theme: 'solarized dark',
+               readOnly: true,
             }); 
           })
           .then(_ => {
-            if(window.location.query){
-               let git = `https://api.github.com/gists/${window.location.query}`;
-               return fetch(git).then(resp => resp.json())
-            }
-          }).then(json => {
+            if(window.location.search){
+               let git = `https://api.github.com/gists/${window.location.search.slice(1)}`;
+               return fetch(git).then(resp => resp.json()).then(json => {
              let code = json.files['main.js'].content;
              window.editor.setValue(code);
              let sandbox = simple_sandbox(code);
-             code({console: {log: function(a){
-                window.console.setValue(window.console.getValue() + a + "\n");
+             sandbox({console: {log: function(a){
+                window.con.setValue(window.con.getValue() + a + "\n");
              }}});
+             });
+            }
           });
    });
    
