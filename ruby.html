@@ -36,10 +36,10 @@
      Promise.all([
           $load('codemirror/lib/codemirror'), 
           $load('codemirror/mode/ruby/ruby'), 
-          $load('http://cdn.opalrb.org/opal/current/opal.js').then(
-              _ =>  $load('http://cdn.opalrb.org/opal/current/opal-parser.js')
+          $load('https://cdn.opalrb.org/opal/current/opal.js').then(
+              _ => $load('https://cdn.opalrb.org/opal/current/opal-parser.js')
           ).then(
-             _ =>  $load('http://cdn.opalrb.org/opal/current/native.min.js')
+             _ =>  $load('https://cdn.opalrb.org/opal/current/native.min.js')
           )
      ])
           .then(([CM]) =>  {                
