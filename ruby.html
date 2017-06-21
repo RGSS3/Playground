@@ -17,13 +17,12 @@
                   
    
    window.addEventListener('load', function(){
-      $load('codemirror/mode/ruby/ruby.js').then( _ => $load('codemirror').then(CM =>                         
+     Promise.all([$load('codemirror'), $load('codemirror/mode/ruby/ruby.js')])
+          .then(([CM]) =>                         
             window.editor = new CM(document.querySelector("#code"), {
                mode: 'ruby',
                lineNumbers: true,
                theme: 'solarized light',
-            })
-      ));                               
-     
+           }));
    });
 </script>
