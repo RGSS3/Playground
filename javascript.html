@@ -32,8 +32,10 @@
    
    
    var simple_sandbox = script => eval(`
-      (function({console, window}){
-        ${script};
+      (function(context){
+        with(context){
+          ${script};
+        }
       })
    `);
    
