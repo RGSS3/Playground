@@ -16,14 +16,15 @@
                   
    
    window.addEventListener('load', function(){
-      $load('codemirror').then(CM => 
+      $load('codemirror').then(CM => {
+         console.log(CM);
          $load('codemirror/mode/ruby/ruby.js', _ =>                              
             window.editor = new CM(document.querySelector("#code"), {
                mode: 'ruby',
                lineNumbers: true,
             })
          )
-      );                               
+      });                               
      
    });
 </script>
